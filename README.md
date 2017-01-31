@@ -48,7 +48,7 @@ Please read [CONTRIBUTING.md](https://github.com/rodrigomas/udp-to-json-server/b
 
 ## Authors
 
-* **Rodrigo Marques** - [PurpleBooth](https://github.com/rodrigomas)
+* **Rodrigo Marques** - [rodrigomas](https://github.com/rodrigomas)
 
 See also the list of [contributors](https://github.com/rodrigomas/udp-to-json-server/contributors) who participated in this project.
 
