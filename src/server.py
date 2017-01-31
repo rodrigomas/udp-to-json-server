@@ -7,7 +7,7 @@ Created on Nov 21, 2016
 #localhost -p 14654 -ph 8000 -t
 import argparse, socket
 from js import httpsrv, datasrv, infodata, dataprocessor
-import f1server
+import server_utest
 import logging
 
 PORT = 8000
@@ -54,7 +54,7 @@ if __name__ == '__main__':
     dserver.start()
     
     if(args.testsv != None ):
-        testsrv = f1server.UDPTestServer(args.host, args.host, args.p + 1, args.p, INTERVAL)
+        testsrv = server_utest.UDPTestServer(args.host, args.host, args.p + 1, args.p, INTERVAL)
         testsrv.start()    
     
     print "All servers started"
