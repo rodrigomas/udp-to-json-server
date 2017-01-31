@@ -4,34 +4,54 @@ Converts a UDP Stream To a HTTP Server to Json
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+This project a simple python server that receives a UDP stream and converts it to Json using a HTTP server.
+The main usage of this is to use with IoT and high level systems like Unity.
 
 ### Prerequisites
 
 - Python 2.7 or 3.5
 
-```
-No ready yet
-```
+#### Libraries
+- httpsrv
+- argparse
 
 ### Installing
 
-No ready yet
+We use pip to install our libraries, but you can use easy_install instead.
 
 ```
-No ready yet
+pip install httpsrv
+pip install argparse
 ```
-
-Example
 
 ## Running the tests
 
-No ready yet
+The command line output with `-h` is:
 
+```
+JSON Protocol Converter
 
-## Deployment
+positional arguments:
+  host        UDP data stream hostname or IP (default: localhost)
 
-No ready yet
+optional arguments:
+  -h, --help  show this help message and exit
+  -p P        UDP data stream Server Port (default: 14654)
+  -ph PH      HTTP JSON Server Port (default: 8000)
+  -l L        Log (default: True)
+  -t          Run Test Server
+  -nt
+```
+
+A simple command line for test is: `python server.py localhost -p 14654 -ph 8000 -t`
+
+To receive the HTTP data you must request `htttp://localhost:8000/`.
+
+## Wrappers
+
+The project has a DataLoader for Unity
+You just need to attach the script with a GameObject and update the URL parameter and the pooling interval.
+Also, the Wrapper has a OnUpdate event.
 
 ## Built With
 
@@ -43,8 +63,7 @@ No ready yet
 Please read [CONTRIBUTING.md](https://github.com/rodrigomas/udp-to-json-server/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
-
-
+We are using SourceTree or GitHub desktop
 
 ## Authors
 
@@ -58,9 +77,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* None Yet
 
 
 
