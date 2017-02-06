@@ -14,6 +14,7 @@ The main usage of this is to use with IoT and high level systems like Unity.
 #### Libraries
 - httpsrv
 - argparse
+- PySerial
 
 ### Installing
 
@@ -22,6 +23,7 @@ We use pip to install our libraries, but you can use easy_install instead.
 ```
 pip install httpsrv
 pip install argparse
+pip install pyserial
 ```
 
 ## Running the tests

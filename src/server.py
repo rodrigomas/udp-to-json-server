@@ -6,7 +6,7 @@ Created on Nov 21, 2016
 '''
 #localhost -p 14654 -ph 8000 -t
 import argparse, socket
-from js import httpsrv, datasrv, infodata, dataprocessor
+from js import httpsrv, datasrv, infodata, dataprocessor, serialreader
 import server_utest
 import logging
 
@@ -14,6 +14,8 @@ PORT = 8000
 SPORT = 14654
 SERVERNAME = "127.0.0.1"
 INTERVAL = 0.5
+COMPORT = "COM3"
+BAUDRATE = 9600
 LOGENABLE = True 
 
 if __name__ == '__main__':
@@ -23,6 +25,10 @@ if __name__ == '__main__':
     parser.add_argument('-p', help='UDP data stream Server Port (default: 14654)', type=int, default=SPORT)
     parser.add_argument('-ph', help='HTTP JSON Server Port (default: 8000)', type=int, default=PORT)
     parser.add_argument('-l', help='Log (default: True)', type=bool, default=LOGENABLE)
+    
+    #parser.add_argument('-s', help='Serial (default: COM3)', type=int, default=COMPORT)
+    #parser.add_argument('-b', help='Serial Boudrate (default: 9300)', type=int, default=BAUDRATE)
+    
     #parser.add_argument('-t', help='Run Test Server')    
     
     feature_parser = parser.add_mutually_exclusive_group(required=False)
@@ -39,7 +45,7 @@ if __name__ == '__main__':
     
     hserver = httpsrv.HttpSrv(args.ph)
     hserver.setInfo(info)
-    hserver.start()    
+    hserver.start()
     
     processor = dataprocessor.F1DataProcessor()
     
@@ -52,6 +58,11 @@ if __name__ == '__main__':
     dserver = datasrv.DataSrv(args.host, args.p, processor)    
     dserver.setInfo(info)
     dserver.start()
+    
+    #serialserver = serialreader.SerialReader(COMPORT, BAUDRATE)
+    #serialserver = serialreader.SerialReader(args.s, args.b)
+    #serialserver.setInfo(info)
+    #serialserver.start()
     
     if(args.testsv != None and args.testsv == True):
         testsrv = server_utest.UDPTestServer(args.host, args.host, args.p + 1, args.p, INTERVAL)
@@ -66,6 +77,8 @@ if __name__ == '__main__':
 
         if(command == 'stop' or command == 'exit'):
             working = False
+    
+    #serialserver.force_stop()
 
     if(args.testsv != None ):
         testsrv.force_stop()
