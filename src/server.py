@@ -53,7 +53,7 @@ if __name__ == '__main__':
     dserver.setInfo(info)
     dserver.start()
     
-    if(args.testsv != None ):
+    if(args.testsv != None and args.testsv == True):
         testsrv = server_utest.UDPTestServer(args.host, args.host, args.p + 1, args.p, INTERVAL)
         testsrv.start()    
     

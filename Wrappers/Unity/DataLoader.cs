@@ -30,9 +30,11 @@ public class DataLoader : MonoBehaviour
 		public int Direction = 0;
 		public int Limit = 0;		
 		public int TempBody01 = 0;
+		public int HumidityBody01 = 0;
 		public int TempBody02 = 0;
 		public float GPSLat;
 		public float GPSLong;
+		public float GPSSpeed;
 		public float GyroX;
 		public float GyroY;
 		public float GyroZ;

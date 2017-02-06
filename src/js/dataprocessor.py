@@ -177,6 +177,32 @@ class F1DataProcessor(DataProcessor):
                         val = (ord(data[i+2]) - ord('0')) * 100 + (ord(data[i+3]) - ord('0')) * 10 + ord(data[i+4]) - ord('0')
                         
                         self.info.setTempBody02(val)
+                                                
+                    elif (ord(data[i+1]) == ord('H')): #F
+                        print('H Message')
+                        ssum = (ord(data[i+1]) + ord(data[i+2]) + ord(data[i+3])  + ord(data[i+4])) & 0x00FF
+                         
+                        checksum = ord(data[i+5])
+                         
+                        if(ssum != checksum and ord(data[i + 6]) != EOT):
+                            continue
+                        
+                        val = (ord(data[i+2]) - ord('0')) * 100 + (ord(data[i+3]) - ord('0')) * 10 + ord(data[i+4]) - ord('0')
+                        
+                        self.info.setHumidityBody01(val)
+                        
+                    elif (ord(data[i+1]) == ord('X')): #F
+                        print('X Message')
+                        ssum = (ord(data[i+1]) + ord(data[i+2]) + ord(data[i+3])  + ord(data[i+4])) & 0x00FF
+                         
+                        checksum = ord(data[i+5])
+                         
+                        if(ssum != checksum and ord(data[i + 6]) != EOT):
+                            continue
+                        
+                        val = (ord(data[i+2]) - ord('0')) * 100 + (ord(data[i+3]) - ord('0')) * 10 + ord(data[i+4]) - ord('0')
+                        
+                        self.info.setGPSSpeed(val * 0.1)                        
                           
                     elif (ord(data[i+1]) == ord('G')): #G
                         print('G Message')

@@ -20,12 +20,20 @@ class InfoData(object):
         self.Direction = 0
         self.Limit = 0
         self.TempBody01 = 0
+        self.HumidityBody01 = 0
         self.TempBody02 = 0
         self.GPSLat = 0
         self.GPSLong = 0
+        self.GPSSpeed = 0
         self.GyroX = 0
         self.GyroY = 0
         self.GyroZ = 0
+
+    def getHumidityBody01(self):
+        return self.HumidityBody01
+    
+    def setHumidityBody01(self, value):
+        self.HumidityBody01 = value    
 
     def getGyroX(self):
         return self.GyroX
@@ -53,6 +61,12 @@ class InfoData(object):
         
     def getGPSLong(self):
         return self.GPSLong
+    
+    def setGPSSpeed(self, value):
+        self.GPSSpeed = value       
+        
+    def getGPSSpeed(self):
+        return self.GPSSpeed    
     
     def setGPSLong(self, value):
         self.GPSLong = value                
