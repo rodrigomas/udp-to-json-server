@@ -41,6 +41,9 @@ optional arguments:
   -p P        UDP data stream Server Port (default: 14654)
   -ph PH      HTTP JSON Server Port (default: 8000)
   -l L        Log (default: True)
+  -s S        Serial Enable (default: True)
+  -cp CP      Serial (default: COM3)
+  -b B        Serial Baudrate (default: 9300)
   -t          Run Test Server
   -nt
 ```

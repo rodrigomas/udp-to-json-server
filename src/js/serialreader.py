@@ -20,6 +20,7 @@ class SerialReader(Thread):
     working = True
 
     def __init__(self, port, boundrate):
+        Thread.__init__(self)
         self.port = port
         self.boundrate = boundrate
         self.info = None
@@ -45,13 +46,15 @@ class SerialReader(Thread):
             if(parts[0].startswith('T1')):                
                 try:
                     val = float(parts[1])
-                    self.info.getTempBody02(val) 
+                    self.info.getTempBody02(val)
+                    print(val) 
                 except:                        
                     return            
             elif (parts[0].startswith('T0')):
                 try:
                     val = float(parts[1])
                     self.info.getTempBody01(val) 
+                    print(val)
                 except:                        
                     return                   
             elif (parts[0].startswith('LAT')):
@@ -116,11 +119,12 @@ class SerialReader(Thread):
                 #print('Waiting up to {} seconds for a reply'.format(self.delay))
                 line = self.ser.readline()
                 
-                if(line == None):
+                if(line == None or len(line) < 2 ):
                     continue
                 
                 try:
                     print 'New Serial Data Received'
+                    print line
                     
                     self.process(line)
                                     
