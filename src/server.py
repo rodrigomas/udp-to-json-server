@@ -62,7 +62,7 @@ if __name__ == '__main__':
     dserver.start()
     
     if(args.s == True):        
-        serialserver = serialreader.SerialReader(COMPORT, BAUDRATE)
+        #serialserver = serialreader.SerialReader(COMPORT, BAUDRATE)
         serialserver = serialreader.SerialReader(args.cp, args.b)
         serialserver.setInfo(info)
         serialserver.start()

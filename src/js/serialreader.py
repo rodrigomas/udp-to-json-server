@@ -140,4 +140,4 @@ class SerialReader(Thread):
         if(self.ser.is_open):
             self.ser.close()
             
-        print 'Data Server Stopping'                    
+        print 'Serial Server Stopping'                    
